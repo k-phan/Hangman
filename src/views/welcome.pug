@@ -1,0 +1,17 @@
+extends index
+
+block append content
+	br
+	br
+	div#welcome(class='row')
+		div#banner(class='offset-by-three six columns')
+			if !user
+				a(class='button' href='/login') Login
+			else
+				h2 Welcome back, #{user}
+				a#home-to-game(href='/game/')
+					h3 Continue to your game &rarr;
+				br
+				h3 or
+				a#home-logout(href='/logout')
+					h3 Logout &#9940;

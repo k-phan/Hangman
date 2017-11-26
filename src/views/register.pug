@@ -1,0 +1,20 @@
+extends index
+
+block append content
+	br
+	br
+	div#login-container
+		br
+		h3 register
+		form#login-form(action='/register' method='post')
+			h6 Username
+			div(class='row')
+				input(type='text', name='username')
+			h6 Password
+			div(class='row')
+				input(type='password', name='password')
+			br
+			div(class='row')
+				button(class='btn-primary', type='submit') Register
+		h6 Already have an account?
+		a(href='/login') Login
