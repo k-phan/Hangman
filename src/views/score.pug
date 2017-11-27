@@ -1,0 +1,12 @@
+extends index
+
+block append content
+	br
+	div#score-wrapper
+		h4 SCORE
+		div(class='row')
+			h5 
+				| Wins: 
+				span(style="color:green") #{score.wins} 
+				| | Losses: 
+				span(style="color:red") #{score.losses}

@@ -1,0 +1,24 @@
+extends score
+
+block append content
+	br
+	br
+	div#game-wrapper
+		if !activeGame.exists
+			h4 No Active Game!
+			a(class='button' href='/game/new-game') New Game
+		else
+			if !alreadyGuessed
+				h4 Guess a Letter
+			else
+				h4#already-guessed You already guessed that letter!
+			form(action='/game/guess-letter', method='post')
+				input#game-input(type='text', name='guess', maxlength='1', pattern='[a-z]{1}')
+			if activeGame.gameState > 0
+				img#hangman-image(src='/images/Hangman' + (activeGame.gameState - 1 )+ '.svg')
+			h1#hangman-word #{activeGame.wordToRender}
+			h4 Previous Guesses
+			h5
+				for letter in activeGame.chars
+					| #{letter + ' '}
+			script(src='/javascripts/game-input.js')

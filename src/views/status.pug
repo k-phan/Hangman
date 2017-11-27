@@ -1,0 +1,16 @@
+extends score
+
+block append content
+	br
+	br
+	div#game-wrapper
+		if activeGame.gameState === 10
+			h4 You lost!
+			h5 The word was ... #{activeGame.word}
+			img#hangman-image(src='/images/Hangman9.svg')
+		else
+			h4 You won!
+			h5 The word was #{activeGame.word}!
+		br
+		br
+		a(class='button' href='/game/new-game') New Game

@@ -11,6 +11,12 @@
 
 #banner-msg {
 	letter-spacing: 3px;
+	color: white;
+	text-decoration: none;
+} 
+
+#banner-msg:hover {
+	color: gray;
 }
 
 /* Welcome/Landing Page */
@@ -34,4 +40,29 @@
 	padding-right: auto;
 	border-radius: 10px;
 	border-width: 4px;
+}
+
+#duplicate-user, #incorrect-password {
+	color: red;
+}
+
+/* Hangman Game */
+#score-wrapper {
+	text-align: center;
+}
+
+#game-wrapper {
+	text-align: center;
+}
+
+#hangman-word {
+	letter-spacing: 10px;
+}
+
+#hangman-image {
+	height: 300px;
+}
+
+#already-guessed {
+	color: red;
 }

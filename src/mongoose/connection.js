@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
 var debug = require('debug')('mongoose-connection')
 
 const URI = ('mongodb://' + process.env.MONGO_IP + ':' +
-	process.env.MONGO_PORT + '/' + process.env.MONGO_MONGOOSE)
+	process.env.MONGO_PORT + '/' + process.env.MONGO_DB_NAME)
 
 const options = {
 	useMongoClient: true

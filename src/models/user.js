@@ -11,7 +11,10 @@ exports = module.exports = function (app, mongoose) {
 		activeGame: {
 			exists: { type: Boolean, default: false },
 			word: { type: String, default: '' },
-			chars: [String]
+			wordToRender: { type: String, default: ''},
+			chars: [String],
+			gameState: { type: Number, default: 0 },
+			remaining: { type: Number, default: 0 }
 		}
 	})
 

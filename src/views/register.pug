@@ -7,6 +7,8 @@ block append content
 		br
 		h3 register
 		form#login-form(action='/register' method='post')
+			if duplicate
+				h6#duplicate-user Username already exists!
 			h6 Username
 			div(class='row')
 				input(type='text', name='username')

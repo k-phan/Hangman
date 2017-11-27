@@ -7,6 +7,8 @@ block append content
 		br
 		h3 login
 		form#login-form(action='/login' method='post')
+			if error
+				h6#incorrect-password Incorrect username or password!
 			h6 Username
 			div(class='row')
 				input(type='text', name='username')

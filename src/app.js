@@ -5,6 +5,8 @@ var logger = require('morgan')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
+var passport = require('passport')
+var session = require('express-session')
 
 var app = express()
 app.mongodb = require('./mongoose/connection')
@@ -21,11 +23,22 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(session({ 
+	secret: process.env.EXPRESS_SECRET,
+	resave: true,
+	saveUninitialized: true
+}))
+
+// passport config
+app.use(passport.initialize())
+app.use(passport.session())
+require('./passport')(app, passport)
 
 // setup routes
 var index = require('./routes/index')
+var game = require('./routes/game')
 app.use('/', index)
-
+app.use('/game', game)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
