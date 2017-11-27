@@ -10,6 +10,7 @@ To run this game...
     * This link may be helpful: [Instructions to Install Node.js](https://nodejs.org/en/download/package-manager/)
 * Start up MongoDB
     ``` sudo systemctl start mongodb ```
+    ``` sudo service start mongodb ```
 * Navigate to **_/Hangman/src/_** after cloning the repository
     * Execute ```npm install```
     * There is a **_.env-sample_** file in this directory, create a copy of it and name it **_.env_**
