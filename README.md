@@ -4,12 +4,12 @@ Server/Client Hangman Game
 ## Run Instructions
 To run this game...
 * Install MongoDB
-    ``` sudo apt-get install mongodb ```
+    ``` sudo apt-get install mongodb ``` or 
     ``` sudo eopkg install mongodb ```
 * Install Node.js and Node Package Manager
     * This link may be helpful: [Instructions to Install Node.js](https://nodejs.org/en/download/package-manager/)
 * Start up MongoDB
-    ``` sudo systemctl start mongodb ```
+    ``` sudo systemctl start mongodb ``` or 
     ``` sudo service start mongodb ```
 * Navigate to **_/Hangman/src/_** after cloning the repository
     * Execute ```npm install```
