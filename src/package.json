@@ -20,5 +20,6 @@
     "pug": "~2.0.0-beta11",
     "random-word": "^2.0.0",
     "serve-favicon": "~2.4.2"
-  }
+  },
+  "devDependencies": {}
 }

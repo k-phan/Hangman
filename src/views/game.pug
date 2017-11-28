@@ -8,12 +8,12 @@ block append content
 			h4 No Active Game!
 			a(class='button' href='/game/new-game') New Game
 		else
-			if !alreadyGuessed
+			if !error
 				h4 Guess a Letter
 			else
-				h4#already-guessed You already guessed that letter!
+				h4#error-msg #{errorMsg}
 			form(action='/game/guess-letter', method='post')
-				input#game-input(type='text', name='guess', maxlength='1', pattern='[a-z]{1}')
+				input#game-input(type='text', name='guess', maxlength='1', oninput='submit()')
 			if activeGame.gameState > 0
 				img#hangman-image(src='/images/Hangman' + (activeGame.gameState - 1 )+ '.svg')
 			h1#hangman-word #{activeGame.wordToRender}
