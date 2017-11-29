@@ -4,7 +4,7 @@ var assert = require('assert');
 var processGuess = require('../../lib/game/processGuess');
 var status = require('../../lib/game/guessEnum');
 var app = {
-    mongodb: require('../mocks/mockMongoProcess')
+    mongodb: require('../mocks/mockMongo')
 };
 
 describe('Game Logic', function () {

@@ -2,7 +2,7 @@
 
 var assert = require('assert');
 var app = {
-    mongodb: require('../mocks/mockMongoGenerate')
+    mongodb: require('../mocks/mockMongo')
 };
 
 var generateGame = require('../../lib/game/generateGame');
