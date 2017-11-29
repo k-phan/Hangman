@@ -7,7 +7,7 @@ var checkAuthentication = require('../misc/checkAuthentication');
 var gameManager = require('../gameLogic');
 
 router.get('/', checkAuthentication, function (req, res, next) {
-    debug("In game: " + req.user);
+    debug("[Route: '/game'] User: " + req.user);
     return res.render('game', {
         title: 'Hangman',
         score: req.user.score,

@@ -3,11 +3,13 @@
 var debug = require('debug')('processGuess');
 var status = require('./guessEnum');
 
-module.exports = function (app, guess, query, done) {
+module.exports = function (app, userGuess, query, done) {
     app.mongodb.models.User.findOne(query, function (err, user) {
         if (err) {
             return done(err, status.ERROR);
         }
+
+        var guess = userGuess.toLowerCase();
 
         if (user.activeGame.chars.indexOf(guess) !== -1) {
             debug('Value of status.REPEAT: ' + status.REPEAT);
