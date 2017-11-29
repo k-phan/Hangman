@@ -37,3 +37,7 @@ To run this game...
 * MongoDB
 * Passport.js
 * Express.js
+* Mocha
+
+## Notes
+* Used Sublime Text 3 with JSLint
