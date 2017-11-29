@@ -41,3 +41,4 @@ To run this game...
 
 ## Notes
 * Used Sublime Text 3 with JSLint
+* To run tests, execute ```npm test```
