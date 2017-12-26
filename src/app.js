@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 var app = express();
 app.mongodb = require('./mongoose/connection');
@@ -28,7 +29,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: process.env.EXPRESS_SECRET,
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new MongoStore({
+        mongooseConnection: app.mongodb,
+        autoRemove: 'native'
+    })
 }));
 
 // passport config
