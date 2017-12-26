@@ -1,3 +1,5 @@
+![Build Status](https://circleci.com/gh/kphan95/Hangman/tree/master.png?style=shield&circle-token=47307dd7ceaa705a2e49d0c7602bf7f4d2df8bc5)
+
 # Hangman
 Server/Client Hangman Game
 
@@ -33,7 +35,7 @@ To run this game...
     PORT=3000
     ```
     * Execute ```npm start``` in the **_src_** directory and open up the game on **http://localhost:3000/**
-    ** Or check it out at [Hangman](hangman.khaiphan.me) *new!!* **
+    * Or check it out at [Hangman](https://hangman.khaiphan.me) **new!!**
 
 ## Technologies
 * Node.js
