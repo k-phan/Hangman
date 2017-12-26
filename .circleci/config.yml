@@ -1,0 +1,66 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:7.10
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/hangman/src
+
+    steps:
+      - checkout:
+          path: ~/hangman
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: 
+          name: install-dependencies
+          command: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: 
+          name: run-tests
+          command: npm test
+      
+      # add required key for file transfer
+      - add_ssh_keys:
+          fingerprints:
+            - "90:26:ce:d9:b0:b3:3f:c1:9f:34:a6:72:f6:5c:3b:c0"
+
+      - deploy:
+          name: deploy-khaiphan-production
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              scp -o StrictHostKeyChecking=no -r ~/hangman/src/bin circleci@khaiphan.me:/srv/hangman/
+              scp -o StrictHostKeyChecking=no -r ~/hangman/src/lib circleci@khaiphan.me:/srv/hangman/
+              scp -o StrictHostKeyChecking=no -r ~/hangman/src/misc circleci@khaiphan.me:/srv/hangman/
+              scp -o StrictHostKeyChecking=no -r ~/hangman/src/models circleci@khaiphan.me:/srv/hangman/
+              scp -o StrictHostKeyChecking=no -r ~/hangman/src/mongoose circleci@khaiphan.me:/srv/hangman/
+              scp -o StrictHostKeyChecking=no -r ~/hangman/src/public circleci@khaiphan.me:/srv/hangman/
+              scp -o StrictHostKeyChecking=no -r ~/hangman/src/routes circleci@khaiphan.me:/srv/hangman/
+              scp -o StrictHostKeyChecking=no -r ~/hangman/src/views circleci@khaiphan.me:/srv/hangman/
+              scp -o StrictHostKeyChecking=no -r ~/hangman/src/scripts circleci@khaiphan.me:/srv/hangman/
+              scp -o StrictHostKeyChecking=no ~/hangman/src/app.js circleci@khaiphan.me:/srv/hangman/
+              scp -o StrictHostKeyChecking=no ~/hangman/src/gameLogic.js circleci@khaiphan.me:/srv/hangman/
+              scp -o StrictHostKeyChecking=no ~/hangman/src/passport.js circleci@khaiphan.me:/srv/hangman/
+              scp -o StrictHostKeyChecking=no ~/hangman/src/package* circleci@khaiphan.me:/srv/hangman/
+              ssh -o StrictHostKeyChecking=no circleci@khaiphan.me 'cd /srv/hangman/scripts/ && chmod 700 start.sh && ./start.sh'
+            fi
