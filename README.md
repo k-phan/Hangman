@@ -21,6 +21,7 @@ To run this game...
     MONGO_PORT= port MongoDB is running on, default port is 27017
     MONGO_DB_NAME= name of the database, a simple string like hangman should be okay
     EXPRESS_SECRET= secret for your express sessions, a simple string should also be okay
+    PORT= port for the app to listen on, default is 3000
     ```
     * An example of a **_.env_** is as follows
     ```
@@ -29,9 +30,11 @@ To run this game...
     MONGO_PORT=27017
     MONGO_DB_NAME=hangman
     EXPRESS_SECRET=secretpassword
+    PORT=3000
     ```
     * Execute ```npm start``` in the **_src_** directory and open up the game on **http://localhost:3000/**
-    
+    ** Or check it out at [Hangman](hangman.khaiphan.me) *new!!* **
+
 ## Technologies
 * Node.js
 * MongoDB
